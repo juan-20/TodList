@@ -2,6 +2,16 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
+    *{
+        @font-face {
+         font-family: "Avenir Next";
+         src: url("assets/fonts/AvenirNextLTPro-Bold.otf"),
+              url("assets/fonts/AvenirNextLTPro-It.otf")
+              url("assets/fonts/AvenirNextLTPro-Regular.otf")
+         }
+         font-family: 'Avenir Next', sans-serif;
+    }
+
     .react-modal-overlay{
         background: rgba(0,0,0, 0.5);
         

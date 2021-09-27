@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { GlobalStyle } from './global';
-import NewTaskModal from "./components/newTaskModal";
+import NewTaskModal from "./components/Modal/newTaskModal";
 import KanbanPage from "./pages/KanbanPage";
 
 function App() {
