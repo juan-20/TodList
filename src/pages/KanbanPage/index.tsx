@@ -1,19 +1,29 @@
+import { GoPlus } from 'react-icons/go';
 import ListBox from '../../components/listBox';
-import { Container } from './styles';
+import { Container, CreateTask } from './styles';
 
 interface KanbanPageProps {
   onOpenNewTaskModal: () => void;
+  onOpenNewListBoxModal: () => void;
 }
 
 
-function KanbanPage({ onOpenNewTaskModal }: KanbanPageProps) {
+function KanbanPage({ onOpenNewTaskModal, onOpenNewListBoxModal }: KanbanPageProps) {
   return (
-    <Container>
-      <h1>KanbanPage</h1>
+    <>
+      <Container>
+        <h1>KanbanPage</h1>
 
+        <CreateTask onClick={onOpenNewListBoxModal}>
+
+          <GoPlus />
+          <p>Adicionar outro cartão</p>
+
+        </CreateTask>
+
+      </Container>
       <ListBox onOpenNewTaskModalInListBox={onOpenNewTaskModal} />
-
-    </Container>
+    </>
   );
 };
 
