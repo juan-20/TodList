@@ -1,8 +1,13 @@
+import { GoPlus } from 'react-icons/go';
 import TaskBox from '../taskBox';
 import { Container, CreateTask } from './styles';
-import { GoPlus } from 'react-icons/go'
 
-function ListBox() {
+interface ListBoxProps {
+  onOpenNewTaskModalInListBox: () => void;
+}
+
+
+function ListBox({ onOpenNewTaskModalInListBox }: ListBoxProps) {
   return (
     <Container>
 
@@ -12,7 +17,7 @@ function ListBox() {
       <TaskBox />
       <TaskBox />
 
-      <CreateTask>
+      <CreateTask onClick={onOpenNewTaskModalInListBox}>
 
         <GoPlus />
         <p>Adicionar outro cartão</p>

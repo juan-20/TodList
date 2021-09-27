@@ -1,14 +1,17 @@
-
 import ListBox from '../../components/listBox';
 import { Container } from './styles';
 
+interface KanbanPageProps {
+  onOpenNewTaskModal: () => void;
+}
 
-function KanbanPage() {
+
+function KanbanPage({ onOpenNewTaskModal }: KanbanPageProps) {
   return (
     <Container>
       <h1>KanbanPage</h1>
 
-      <ListBox />
+      <ListBox onOpenNewTaskModalInListBox={onOpenNewTaskModal} />
 
     </Container>
   );

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     min-height: 12.5rem;
     width: 19.688rem;
-    background: purple;
+    background: #5CC4FF;
     color: #fff;
     border-radius: 5px;
 
@@ -17,6 +17,8 @@ export const CreateTask = styled.div`
     align-items: center;
     padding: 1.25rem;
     height: 1rem;
+
+    background: #5CC4FF;
 
     cursor: pointer;
     
