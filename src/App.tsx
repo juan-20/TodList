@@ -1,7 +1,9 @@
+import KanbanPage from "./pages/KanbanPage";
+
 function App() {
   return (
     <>
-      <p>Oi</p>
+      <KanbanPage />
     </>
   );
 }
