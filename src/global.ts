@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
+    /* font */
     *{
         @font-face {
          font-family: "Avenir Next";
@@ -12,6 +13,49 @@ export const GlobalStyle = createGlobalStyle`
          font-family: 'Avenir Next', sans-serif;
     }
 
+    /* inputs */
+    input{
+            width: 90%;
+            padding: 0 1.5rem;
+            height: 4rem;
+            border-radius: 0.25rem;
+
+            border: 1px solid #d7d7d7;
+            background: #e7e9ee;
+
+            font-weight: 400;
+            font-size: 1rem;
+
+            & + input {
+                margin-top: 1rem;
+            }
+        }
+
+        input[type = "color"]{
+            background: transparent;
+            border: none;
+        }
+
+        button[type="submit"]{
+        width: 100%;
+        padding: 0 1.5rem;
+        height: 4rem;
+        background: #33cc95;
+        color: #fff;
+        border-radius: 0.25rem;
+        border: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 3rem;
+
+        transition: filter 0.2s;
+
+        &:hover{
+            filter: brightness(0.9);
+        }
+    }
+
+    /* modal style */
     .react-modal-overlay{
         background: rgba(0,0,0, 0.5);
         
