@@ -3,6 +3,7 @@ import { GlobalStyle } from './global';
 import NewTaskModal from "./components/Modal/newTaskModal";
 import KanbanPage from "./pages/KanbanPage";
 import NewListBoxModal from "./components/Modal/NewListBoxModal";
+import { ListBoxProvider } from "./hooks/ListBoxContext";
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
 
 
   return (
-    <>
+    <ListBoxProvider>
       <GlobalStyle />
       {/* passando a função para poder abrir o popup  */}
       <KanbanPage
@@ -44,7 +45,7 @@ function App() {
       <NewListBoxModal
         isOpen={isNewListBoxModalOpen}
         onRequestClose={handleCloseNewListBoxModal} />
-    </>
+    </ListBoxProvider>
   );
 }
 

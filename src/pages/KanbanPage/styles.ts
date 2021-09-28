@@ -16,12 +16,12 @@ export const CreateTask = styled.div`
     height: 1rem;
     width: 15rem;
 
-    background: #ccc;
+    background: #CAD1D5;
 
     cursor: pointer;
     
     p{
-        color: #fff;
+        color: #333;
         padding-left: 1rem;
         font-size: 1rem;
     }

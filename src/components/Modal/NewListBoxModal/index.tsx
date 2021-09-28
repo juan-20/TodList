@@ -2,6 +2,7 @@ import Modal from 'react-modal';
 import { GrClose } from 'react-icons/gr';
 import { useState } from 'react';
 import { Container } from './styles';
+import { api } from '../../../services/api';
 
 
 interface NewListBoxProps {
@@ -14,8 +15,11 @@ function NewListBoxModal({ isOpen, onRequestClose }: NewListBoxProps) {
   const [title, setTitle] = useState('');
   const [color, setColor] = useState('');
 
-  function Submit() {
+  function createBoxModal() {
     console.log({ title, color })
+
+
+    api.post('/listBox')
   }
 
   Modal.setAppElement('#root');
@@ -45,7 +49,7 @@ function NewListBoxModal({ isOpen, onRequestClose }: NewListBoxProps) {
           onChange={event => setColor(event.target.value)} />
 
         <button
-          onClick={Submit}
+          onClick={createBoxModal}
           type="submit">
           Cadastrar
         </button>

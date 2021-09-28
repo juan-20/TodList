@@ -2,13 +2,13 @@ import { GoPlus } from 'react-icons/go';
 import ListBox from '../../components/listBox';
 import { Container, CreateTask } from './styles';
 
-interface KanbanPageProps {
+interface KanbanPageFunctionProps {
   onOpenNewTaskModal: () => void;
   onOpenNewListBoxModal: () => void;
 }
 
 
-function KanbanPage({ onOpenNewTaskModal, onOpenNewListBoxModal }: KanbanPageProps) {
+function KanbanPage({ onOpenNewTaskModal, onOpenNewListBoxModal }: KanbanPageFunctionProps) {
   return (
     <>
       <Container>
@@ -22,6 +22,8 @@ function KanbanPage({ onOpenNewTaskModal, onOpenNewListBoxModal }: KanbanPagePro
         </CreateTask>
 
       </Container>
+
+
       <ListBox onOpenNewTaskModalInListBox={onOpenNewTaskModal} />
     </>
   );

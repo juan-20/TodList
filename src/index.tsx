@@ -7,17 +7,17 @@ import App from './App';
 createServer({
 
   models: {
-    tasks: Model,
+    listBoxs: Model,
   },
 
   seeds(server) {
     server.db.loadData({
-      tasks: [
+      listBoxs: [
         {
           id: 0,
-          title: 'Comer',
-          tag: 'tag 1',
-        }
+          title: 'Freelancer de website',
+          color: '#333',
+        },
       ]
     })
   },
@@ -25,14 +25,14 @@ createServer({
   routes() {
     this.namespace = 'api';
 
-    this.get('/transactions', () => {
-      return this.schema.all('transaction')
+    this.get('/listBox', () => {
+      return this.schema.all('listBoxs')
     })
 
-    this.post('transactions', (schema, request) => {
+    this.post('/listBox', (schema, request) => {
       const data = JSON.parse(request.requestBody)
 
-      return schema.create('transaction', data)
+      return schema.create('listBoxs', data)
     })
   }
 })
