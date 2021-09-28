@@ -1,8 +1,9 @@
 import Modal from 'react-modal';
 import { GrClose } from 'react-icons/gr';
 import { useState } from 'react';
-import { Container } from './styles';
+import { Alert, Container } from './styles';
 import { api } from '../../../services/api';
+import { type } from 'os';
 
 
 interface NewListBoxProps {
@@ -14,10 +15,21 @@ function NewListBoxModal({ isOpen, onRequestClose }: NewListBoxProps) {
 
   const [title, setTitle] = useState('');
   const [color, setColor] = useState('');
+  const [type, setType] = useState(false);
 
   function createBoxModal() {
     console.log({ title, color })
 
+    if (!title) {
+      setType(true)
+    }
+
+    if (title) {
+      setType(false)
+    }
+
+    if (!color) {
+    }
 
     api.post('/listBox')
   }
@@ -38,11 +50,17 @@ function NewListBoxModal({ isOpen, onRequestClose }: NewListBoxProps) {
 
         <h1>Cadastrar List box</h1>
 
+        <Alert
+          isActive={type === false}
+          activeColor="gray"
+        >Digite o título:</Alert>
+
         <input type="text" placeholder="Titulo"
           value={title}
           onChange={event => setTitle(event.target.value)} />
 
-        <p>Clique e selecione uma cor:</p>
+
+        <p id="color">Clique e selecione uma cor:</p>
 
         <input type="color" placeholder="Titulo"
           value={color}

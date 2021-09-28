@@ -38,7 +38,6 @@ export function ListBoxProvider({ children }: ListBoxProviderProps) {
     }, [])
 
     function createListBox(listBox: ListBoxInput) {
-
         api.post('/listBox', listBox)
     }
 

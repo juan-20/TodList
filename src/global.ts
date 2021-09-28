@@ -11,6 +11,8 @@ export const GlobalStyle = createGlobalStyle`
               url("assets/fonts/AvenirNextLTPro-Regular.otf")
          }
          font-family: 'Avenir Next', sans-serif;
+
+        box-sizing: border-box;
     }
 
     /* inputs */
