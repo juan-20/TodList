@@ -14,7 +14,12 @@ function TaskBox() {
         dragElastic={0.7}
         whileDrag={{ scale: 1.2 }}
         dragMomentum={false}
-
+        onDrag={
+          (event, info) => console.log(info.point.x, info.point.y)
+        }
+        onDragEnd={
+          (event, info) => console.log('Salva dentro da nova listBox')
+        }
       >
         <div className="task">
           <div className="task-content">

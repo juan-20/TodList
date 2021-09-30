@@ -1,9 +1,9 @@
 import Modal from 'react-modal';
 import { GrClose } from 'react-icons/gr';
-import { useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import { Alert, Container } from './styles';
 import { api } from '../../../services/api';
-import { type } from 'os';
+import { ListBoxContext } from '../../../hooks/ListBoxContext';
 
 
 interface NewListBoxProps {
@@ -13,25 +13,28 @@ interface NewListBoxProps {
 
 function NewListBoxModal({ isOpen, onRequestClose }: NewListBoxProps) {
 
+  const { createListBox } = useContext(ListBoxContext)
+
   const [title, setTitle] = useState('');
   const [color, setColor] = useState('');
   const [type, setType] = useState(false);
 
-  function createBoxModal() {
+  function createBoxModal(event: FormEvent) {
     console.log({ title, color })
 
     if (!title) {
       setType(true)
+      return
     }
 
     if (title) {
       setType(false)
     }
-
-    if (!color) {
-    }
-
-    api.post('/listBox')
+    event.preventDefault();
+    createListBox({
+      title,
+      color
+    })
   }
 
   Modal.setAppElement('#root');
