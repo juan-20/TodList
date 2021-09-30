@@ -32,4 +32,4 @@ export const Alert = styled.p<TextProps>`
     }
     
 
-    `;
+`;
