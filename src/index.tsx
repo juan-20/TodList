@@ -17,6 +17,13 @@ createServer({
           id: 0,
           title: 'Freelancer de website',
           color: '#333',
+          tasks: [
+            {
+              id: 0,
+              title: 'Titulo',
+              collumn: '#444',
+            }
+          ]
         },
       ]
     })

@@ -6,12 +6,6 @@ import { api } from "../services/api";
 // gambiarra pra ele aceitar a tipagem
 export const ListBoxContext = createContext<ListBoxContextData>({} as ListBoxContextData);
 
-interface Task {
-    id: number,
-    title: string,
-    tag: string,
-}
-
 interface ListBox {
     id: number,
     color: string,

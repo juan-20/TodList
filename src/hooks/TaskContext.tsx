@@ -7,9 +7,7 @@ export const TasksContext = createContext<TasksContextData>({} as TasksContextDa
 interface Task {
     id: number;
     title: string;
-    type: string;
-    category: string;
-    createdAt: string;
+    collumn: string;
 }
 
 // interface TransactionInput {
