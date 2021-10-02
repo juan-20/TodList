@@ -6,6 +6,7 @@ import NewListBoxModal from "./components/Modal/NewListBoxModal";
 import { ListBoxProvider } from "./hooks/ListBoxContext";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { TasksContext, TasksProvider } from "./hooks/TaskContext";
 
 function App() {
 
@@ -34,21 +35,23 @@ function App() {
 
   return (
     <ListBoxProvider>
-      <DndProvider backend={HTML5Backend}>
-        <GlobalStyle />
-        {/* passando a função para poder abrir o popup  */}
-        <KanbanPage
-          onOpenNewTaskModal={handleOpenNewTaskModal}
-          onOpenNewListBoxModal={handleOpenNewListBoxModal} />
+      <TasksProvider>
+        <DndProvider backend={HTML5Backend}>
+          <GlobalStyle />
+          {/* passando a função para poder abrir o popup  */}
+          <KanbanPage
+            onOpenNewTaskModal={handleOpenNewTaskModal}
+            onOpenNewListBoxModal={handleOpenNewListBoxModal} />
 
-        <NewTaskModal
-          isOpen={isNewTaskModalOpen}
-          onRequestClose={handleCloseNewTaskModal} />
+          <NewTaskModal
+            isOpen={isNewTaskModalOpen}
+            onRequestClose={handleCloseNewTaskModal} />
 
-        <NewListBoxModal
-          isOpen={isNewListBoxModalOpen}
-          onRequestClose={handleCloseNewListBoxModal} />
-      </DndProvider>
+          <NewListBoxModal
+            isOpen={isNewListBoxModalOpen}
+            onRequestClose={handleCloseNewListBoxModal} />
+        </DndProvider>
+      </TasksProvider>
     </ListBoxProvider>
   );
 }
