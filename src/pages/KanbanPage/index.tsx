@@ -24,6 +24,8 @@ function KanbanPage({ onOpenNewTaskModal, onOpenNewListBoxModal }: KanbanPageFun
       </Container>
 
 
+
+
       <ListBox onOpenNewTaskModalInListBox={onOpenNewTaskModal} />
     </>
   );

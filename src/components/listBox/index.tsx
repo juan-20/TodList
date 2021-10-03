@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { GoPlus } from 'react-icons/go';
+import { ListBoxContext } from '../../hooks/ListBoxContext';
 import TaskBox from '../taskBox';
 import { Container, CreateTask } from './styles';
 
@@ -8,19 +10,31 @@ interface ListBoxProps {
 
 
 function ListBox({ onOpenNewTaskModalInListBox }: ListBoxProps) {
+
+  const { listBox } = useContext(ListBoxContext)
+
+  console.log(listBox)
+
+  let i = 0;
+
   return (
     <Container>
 
       {/* title must be dinamic and also color */}
-      <h1> To do </h1>
+      {listBox.map(listBoxs => (
+        <div key={listBoxs.id}>
+          <h1>{listBoxs.title}</h1>
 
-      <TaskBox />
-      <TaskBox />
+
+          <TaskBox name={listBoxs.tasks} />
+        </div>
+      ))}
 
       <CreateTask onClick={onOpenNewTaskModalInListBox}>
 
         <GoPlus />
-        <p>Adicionar outro cartão</p>
+
+        <p>Adiconar Cartão</p>
 
       </CreateTask>
 
