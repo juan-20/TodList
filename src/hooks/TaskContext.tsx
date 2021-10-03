@@ -17,7 +17,7 @@ interface Task {
 //     category: string;
 // }
 // ou:  (pode usar pick pra selecionar os campos que você quer)
-type TaskInput = Omit<Task, 'id' | 'createdAt'>
+type TaskInput = Omit<Task, 'id'>
 
 // deixa ele ter conteudo dentro dele
 interface TasksProviderProps {
@@ -33,13 +33,13 @@ export function TasksProvider({ children }: TasksProviderProps) {
     const [tasks, setTasks] = useState<Task[]>([]);
 
     useEffect(() => {
-        api.get('tasks')
+        api.get('listBox')
             .then(response => setTasks(response.data.tasks))
     }, [])
 
     function createTask(task: TaskInput) {
 
-        api.post('/tasks', task)
+        api.post('/listBox', task)
     }
 
     return (
