@@ -42,6 +42,9 @@ function App() {
           onOpenNewListBoxModal={handleOpenNewListBoxModal} />
 
         <NewTaskModal
+          // fazer com que o id passado aqui seja o que simboliza o listbox que o botão foi clicado
+          //  olha aqui juan do futuro: https://stackoverflow.com/questions/33682774/how-to-access-the-key-property-from-a-reactjs-component
+          idOfTheListBox={4}
           isOpen={isNewTaskModalOpen}
           onRequestClose={handleCloseNewTaskModal} />
 

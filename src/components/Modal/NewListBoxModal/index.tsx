@@ -4,6 +4,7 @@ import { FormEvent, useContext, useState } from 'react';
 import { Alert, Container } from './styles';
 import { api } from '../../../services/api';
 import { ListBoxContext } from '../../../hooks/ListBoxContext';
+import axios from 'axios';
 
 
 interface NewListBoxProps {
@@ -21,6 +22,11 @@ function NewListBoxModal({ isOpen, onRequestClose }: NewListBoxProps) {
 
   function createBoxModal(event: FormEvent) {
     console.log({ title, color })
+    const getData = async () => {
+      const res = await axios.get('https://localhost:3000/api/listBox')
+      console.log(res)
+    }
+    getData();
 
     if (!title) {
       setType(true)

@@ -1,22 +1,16 @@
+import axios from 'axios';
 import { createContext, ReactNode, useEffect, useState } from 'react'
 import { api } from '../services/api';
 
 export const TasksContext = createContext<TasksContextData>({} as TasksContextData);
 
-// parou em 10 min
+
 interface Task {
     id: number;
     title: string;
     collumn: string;
 }
 
-// interface TransactionInput {
-//     title: string;
-//     amount: number;
-//     type: string;
-//     category: string;
-// }
-// ou:  (pode usar pick pra selecionar os campos que você quer)
 type TaskInput = Omit<Task, 'id'>
 
 // deixa ele ter conteudo dentro dele
@@ -29,6 +23,17 @@ interface TasksContextData {
     createTask: (task: TaskInput) => void;
 }
 
+interface ListBox {
+    id: string,
+    color: string,
+    title: string,
+    task: [
+        id: number,
+        title: string,
+        collumn: string,
+    ]
+}
+
 export function TasksProvider({ children }: TasksProviderProps) {
     const [tasks, setTasks] = useState<Task[]>([]);
 
@@ -39,7 +44,22 @@ export function TasksProvider({ children }: TasksProviderProps) {
 
     function createTask(task: TaskInput) {
 
-        api.post('/listBox', task)
+        const getData = async () => {
+            const res = await axios.get('https://localhost:3000/api/listBox')
+            console.log(res)
+            // id que será enviado pelo componente que será o collumn
+            let id = 4;
+            let i = 0
+            while (res.data.listBoxs[i] !== id) {
+                i++;
+            }
+
+            // o i vai ter a posição do array que vou salvar a task
+
+        }
+        getData();
+        // api.get('/listBox'), listbox.id
+        // api.post('/listBox', task)
     }
 
     return (

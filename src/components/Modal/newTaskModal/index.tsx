@@ -7,9 +7,10 @@ import { TasksContext } from '../../../hooks/TaskContext';
 interface NewTaskModalProps {
   isOpen: boolean;
   onRequestClose: () => void
+  idOfTheListBox: number,
 }
 
-function NewTaskModal({ isOpen, onRequestClose }: NewTaskModalProps) {
+function NewTaskModal({ isOpen, onRequestClose, idOfTheListBox }: NewTaskModalProps) {
 
   const { createTask } = useContext(TasksContext)
 
@@ -20,7 +21,7 @@ function NewTaskModal({ isOpen, onRequestClose }: NewTaskModalProps) {
 
   function CreateNewTask() {
     console.log({
-      title, collumn
+      title, collumn, idOfTheListBox
     })
 
     createTask({
@@ -28,6 +29,8 @@ function NewTaskModal({ isOpen, onRequestClose }: NewTaskModalProps) {
     })
 
   }
+
+
 
   Modal.setAppElement('#root');
   return (
@@ -44,7 +47,7 @@ function NewTaskModal({ isOpen, onRequestClose }: NewTaskModalProps) {
         <GrClose />
       </button>
 
-      <h1>Cadastrar List box</h1>
+      <h1>Cadastrar task</h1>
 
 
       <input type="text" placeholder="Titulo"
