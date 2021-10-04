@@ -6,7 +6,11 @@
 - Problemas
 - Estatisticas 
 
+![Main UI](https://github.com/juan-20/TodList/blob/main/src/assets/readme/landing-kanban.gif?raw=true "Main UI")
 
+![Kanban](https://github.com/juan-20/TodList/blob/main/src/assets/readme/kanban-landing.PNG?raw=true "Kanban")
+
+![kanban-drag](https://github.com/juan-20/TodList/blob/main/src/assets/readme/drag-kanban.PNG?raw=true "kanban-drag")
 
 # React
 
