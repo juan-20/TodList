@@ -50,10 +50,16 @@ export function TasksProvider({ children }: TasksProviderProps) {
     async function CreateTask(taskInput: TaskInput) {
         let id: number = taskInput.collumn
         console.log(listBox[id].tasks)
+        console.log(listBox)
         console.log(listBox[id].tasks.length)
 
         // @ts-ignore
-        const res = await api.post('/listBox', listBox[id].tasks.push(taskInput))
+        listBox[id].tasks.push(taskInput)
+
+
+
+        // @ts-ignore
+        const res = await api.post('/listBox', listBox[id].tasks)
         console.log(res)
 
         const { task } = res.data
@@ -64,11 +70,6 @@ export function TasksProvider({ children }: TasksProviderProps) {
         ])
 
         console.log(tasks)
-
-
-        // id que será enviado pelo componente que será o collumn
-        // o i vai ter a posição do array que vou salvar a task
-
 
         // api.get('/listBox'), listbox.id
         // api.post('/listBox', task)

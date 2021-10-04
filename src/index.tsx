@@ -18,19 +18,29 @@ createServer({
       listBoxs: [
         {
           id: 0,
-          title: 'Freelancer de website',
+          title: 'Backlog',
           color: '#333',
           tasks: [
             {
               id: 0,
-              title: 'Titulo',
+              title: 'Documentar padrões mobile',
               collumn: '0',
             },
             {
               id: 1,
-              title: 'Chord',
+              title: 'Ajustar fluxos de compra',
               collumn: '0',
-            }
+            },
+            {
+              id: 2,
+              title: 'UX Review',
+              collumn: '0',
+            },
+            {
+              id: 3,
+              title: 'Sprint planning',
+              collumn: '0',
+            },
           ]
         },
       ]

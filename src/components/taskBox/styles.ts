@@ -49,7 +49,8 @@ export const Container = styled.div`
     }
 
     p{
-        height: 100vh;
+        width: 17.188rem;
+        height: 26.5rem;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-
+    padding:  0 0 0 60px;
     .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 40px 0 40px 40px ;
     }
 
     .list{
@@ -13,9 +14,6 @@ export const Wrapper = styled.div`
         gap: 1.25rem;
         padding: 1.25rem 0 0 1.25rem;
     }
-   .list-box{
-   
-}
 `;
 
 interface BackgroundProps {
@@ -45,9 +43,12 @@ export const ListBox = styled.div<BackgroundProps>`
     .list-box-content{
 
     >h1{
+        width: 87%;
+        text-overflow: ellipsis;
         font-size: 1.5rem;
         margin-top: 1.25rem;
         margin-left: 1.25rem;
+        border-bottom: 1px solid #fff;
     }
     }
 

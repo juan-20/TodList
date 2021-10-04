@@ -39,15 +39,15 @@ export const GlobalStyle = createGlobalStyle`
             }
         }
     select{
-            width: 90%;
+            width: 100%;
             padding: 0 1.5rem;
             border-radius: 0.25rem;
-
+            text-overflow: ellipsis;
             border: 1px solid #d7d7d7;
             background: #e7e9ee;
-
             font-weight: 400;
             font-size: 1rem;
+            text-align: center;
 
             & + input {
                 margin-top: 1rem;

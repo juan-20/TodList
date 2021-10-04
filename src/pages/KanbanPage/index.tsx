@@ -13,14 +13,12 @@ function KanbanPage({ onOpenNewTaskModal, onOpenNewListBoxModal }: KanbanPageFun
 
   const { listBox } = useContext(ListBoxContext)
 
-  const [type, setType] = useState('#fff');
-
   const style = { color: "#fff", fontSize: "1.5rem", stroke: "#fff" }
 
   return (
     <Wrapper>
       <div className="header">
-        <h1>KanbanPage</h1>
+        <h1>Kanban do projeto</h1>
 
         <CreateListBox onClick={onOpenNewListBoxModal}>
 

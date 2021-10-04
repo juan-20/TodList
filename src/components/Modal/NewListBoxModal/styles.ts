@@ -21,7 +21,7 @@ interface TextProps {
     activeColor: 'gray' | 'red';
 }
 
-export const Alert = styled.p<TextProps>`
+export const AlertText = styled.p<TextProps>`
     color: ${(props) => props.isActive
         ? '#333' : 'red'
     };
@@ -32,4 +32,17 @@ export const Alert = styled.p<TextProps>`
     }
     
 
-`;
+    `;
+
+interface ColorProps {
+    isActive: boolean;
+    activeColor: 'gray' | 'red';
+}
+
+export const AlertColor = styled.p<ColorProps>`
+        color: ${(props) => props.isActive
+        ? '#333' : 'red'
+    };
+      
+    
+    `;

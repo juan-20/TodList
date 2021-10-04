@@ -1,10 +1,8 @@
 import Modal from 'react-modal';
 import { GrClose } from 'react-icons/gr';
 import { FormEvent, useContext, useState } from 'react';
-import { Alert, Container } from './styles';
-import { api } from '../../../services/api';
+import { AlertText, AlertColor, Container } from './styles';
 import { ListBoxContext } from '../../../hooks/ListBoxContext';
-import axios from 'axios';
 
 
 interface NewListBoxProps {
@@ -19,22 +17,25 @@ function NewListBoxModal({ isOpen, onRequestClose }: NewListBoxProps) {
   const [title, setTitle] = useState('');
   const [color, setColor] = useState('');
   const [type, setType] = useState(false);
+  const [handleColor, setHandleColor] = useState(false);
 
   function createBoxModal(event: FormEvent) {
     console.log({ title, color })
-    const getData = async () => {
-      const res = await axios.get('https://localhost:3000/api/listBox')
-      console.log(res)
-    }
-    getData();
+
+    // const getData = async () => {
+    //   const res = await axios.get('https://localhost:3000/api/listBox')
+    //   console.log(res)
+    // }
+    // getData();
 
     if (!title) {
       setType(true)
       return
     }
 
-    if (title) {
-      setType(false)
+    if (!color) {
+      setHandleColor(true)
+      return
     }
     event.preventDefault();
     createListBox({
@@ -60,17 +61,20 @@ function NewListBoxModal({ isOpen, onRequestClose }: NewListBoxProps) {
 
         <h1>Cadastrar List box</h1>
 
-        <Alert
+        <AlertText
           isActive={type === false}
           activeColor="gray"
-        >Digite o título:</Alert>
+        >Digite a cor:</AlertText>
 
         <input type="text" placeholder="Titulo"
           value={title}
           onChange={event => setTitle(event.target.value)} />
 
 
-        <p id="color">Clique e selecione uma cor:</p>
+        <AlertColor
+          isActive={handleColor === false}
+          activeColor="gray"
+        >Digite o título:</AlertColor>
 
         <input type="color" placeholder="Titulo"
           value={color}
