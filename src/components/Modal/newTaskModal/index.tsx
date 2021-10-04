@@ -1,7 +1,7 @@
 import { ReactNode, useContext, useState } from 'react';
 import Modal from 'react-modal';
 import { GrClose } from 'react-icons/gr';
-import { Alert, Container } from '../NewListBoxModal/styles';
+import { Container } from './styles';
 import { TasksContext } from '../../../hooks/TaskContext';
 import { ListBoxContext } from '../../../hooks/ListBoxContext';
 
@@ -12,31 +12,46 @@ interface NewTaskModalProps {
 
 function NewTaskModal({ isOpen, onRequestClose }: NewTaskModalProps) {
 
-  const { createTask } = useContext(TasksContext)
+  const { CreateTask } = useContext(TasksContext)
+
+  const { listBox } = useContext(ListBoxContext)
 
   const [title, setTitle] = useState('');
-  const [collumn, setCollumn] = useState('');
-  const [type, setType] = useState(false);
+  const [collumn, setCollumn] = useState(0);
 
 
   function CreateNewTask() {
 
+    let id = document.getElementById('id')
+
     console.log({
+      title, collumn,
+    })
+
+    CreateTask({
       title, collumn
     })
 
-    // createTask({
-    //   title, collumn
-    // })
+  }
+
+  interface ListBox {
+    id: number,
+    color: string,
+    title: string
+    tasks: Task[],
 
   }
 
+  interface Task {
+    id: number;
+    title: string;
+    collumn: string;
+  }
 
 
   Modal.setAppElement('#root');
-  const { listBox } = useContext(ListBoxContext)
 
-  let idCollumn = listBox;
+  let idCollumn: ListBox[] = listBox;
 
   return (
 
@@ -52,24 +67,30 @@ function NewTaskModal({ isOpen, onRequestClose }: NewTaskModalProps) {
           <GrClose />
         </button>
 
-        <h1>Cadastrar task</h1>
+        <h1>Cadastrar nova task</h1>
 
+        <div className="content">
+          <input type="text" placeholder="Titulo"
+            value={title}
+            onChange={event => setTitle(event.target.value)} />
 
-        <input type="text" placeholder="Titulo"
-          value={title}
-          onChange={event => setTitle(event.target.value)} />
+          <select
+            onChange={(e) => {
+              const selectedList = e.target.value;
+              setCollumn(parseFloat(selectedList))
+            }}
+            id="id" className="select" name="Selecionar outra lista">
+            {idCollumn.map(idCollumns => (
+              <option key={idCollumns.id} value={idCollumns.id}>{idCollumns.title}</option>
+            ))}
+          </select>
 
-        <select name="Selecionar outra lista">
-          {idCollumn.map(idCollumn => (
-            <option key={idCollumn.id} value={idCollumn.id}>{idCollumn.title}</option>
-          ))}
-        </select>
-
-        <button
-          onClick={CreateNewTask}
-          type="submit">
-          Cadastrar
-        </button>
+          <button
+            onClick={CreateNewTask}
+            type="submit">
+            Cadastrar
+          </button>
+        </div>
 
       </Container>
 

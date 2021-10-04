@@ -39,7 +39,8 @@ function NewListBoxModal({ isOpen, onRequestClose }: NewListBoxProps) {
     event.preventDefault();
     createListBox({
       title,
-      color
+      color,
+      tasks: []
     })
   }
 

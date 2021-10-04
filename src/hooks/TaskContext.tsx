@@ -8,7 +8,7 @@ export const TasksContext = createContext<TasksContextData>({} as TasksContextDa
 interface Task {
     id: number;
     title: string;
-    collumn: string;
+    collumn: number;
 }
 
 type TaskInput = Omit<Task, 'id'>
@@ -20,14 +20,14 @@ interface TasksProviderProps {
 
 interface TasksContextData {
     tasks: Task[];
-    createTask: (task: TaskInput) => void;
+    CreateTask: (task: TaskInput) => void;
 }
 
 interface ListBox {
     id: string,
     color: string,
     title: string,
-    task: [
+    tasks: [
         id: number,
         title: string,
         collumn: string,
@@ -36,30 +36,46 @@ interface ListBox {
 
 export function TasksProvider({ children }: TasksProviderProps) {
     const [tasks, setTasks] = useState<Task[]>([]);
+    const [listBox, setListBox] = useState<ListBox[]>([]);
 
     useEffect(() => {
         api.get('listBox')
-            .then(response => setTasks(response.data.tasks))
+            .then(response => setTasks(response.data.listBoxs))
+    }, [])
+    useEffect(() => {
+        api.get('listBox')
+            .then(response => setListBox(response.data.listBoxs))
     }, [])
 
-    function createTask(task: TaskInput) {
+    async function CreateTask(taskInput: TaskInput) {
+        let id: number = taskInput.collumn
+        console.log(listBox[id].tasks)
+        console.log(listBox[id].tasks.length)
 
-        const getData = async () => {
-            const res = await axios.post('/listBox',)
-            console.log(res)
+        // @ts-ignore
+        const res = await api.post('/listBox', listBox[id].tasks.push(taskInput))
+        console.log(res)
+
+        const { task } = res.data
+
+        setTasks([
+            // @ts-ignore 
+            ...listBox[id].tasks, taskInput
+        ])
+
+        console.log(tasks)
 
 
-            // id que será enviado pelo componente que será o collumn
-            // o i vai ter a posição do array que vou salvar a task
+        // id que será enviado pelo componente que será o collumn
+        // o i vai ter a posição do array que vou salvar a task
 
-        }
-        getData();
+
         // api.get('/listBox'), listbox.id
         // api.post('/listBox', task)
     }
 
     return (
-        <TasksContext.Provider value={{ tasks, createTask }}>
+        <TasksContext.Provider value={{ tasks, CreateTask }}>
             {children}
         </TasksContext.Provider>
     )

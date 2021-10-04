@@ -29,7 +29,7 @@ interface ListBoxContextData {
     createListBox: (listBox: ListBoxInput) => void;
 }
 
-type ListBoxInput = Omit<ListBox, 'id' | 'tasks'>
+type ListBoxInput = Omit<ListBox, 'id'>
 
 export function ListBoxProvider({ children }: ListBoxProviderProps) {
     const [listBox, setListBox] = useState<ListBox[]>([]);
@@ -41,6 +41,9 @@ export function ListBoxProvider({ children }: ListBoxProviderProps) {
     }, [])
 
     async function createListBox(listBoxInput: ListBoxInput) {
+
+        let tasks: any[] = []
+
         const res = await api.post('/listBox', listBoxInput)
 
         const { listBoxs } = res.data
@@ -51,6 +54,7 @@ export function ListBoxProvider({ children }: ListBoxProviderProps) {
 
         console.log(listBox)
     }
+
 
     return (
         <ListBoxContext.Provider value={{ listBox, createListBox }}>

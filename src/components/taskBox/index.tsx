@@ -25,7 +25,7 @@ function TaskBox({ name, idCollumn }: props) {
   return (
     <Container >
 
-      {name != undefined ?
+      {name.length > 1 ?
         name.map(name => (
           <motion.div className="task" key={name.id}
             drag

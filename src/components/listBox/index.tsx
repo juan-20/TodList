@@ -25,7 +25,6 @@ function ListBox({ onOpenNewTaskModalInListBox }: ListBoxProps) {
         <div key={listBoxs.id}>
           <h1>{listBoxs.title}</h1>
 
-
           <TaskBox idCollumn={listBox} name={listBoxs.tasks} />
         </div>
       ))}
