@@ -1,5 +1,11 @@
 ### Todlist - React
 
+`git clone https://github.com/juan-20/TodList.git`
+`cd TodList`
+`code .`
+`yarn install`
+`yarn start`
+
 - React
 -  API
 -  Modal
