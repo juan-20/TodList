@@ -6,6 +6,7 @@ import NewListBoxModal from "./components/Modal/NewListBoxModal";
 import { ListBoxProvider } from "./hooks/ListBoxContext";
 import { TasksContext, TasksProvider } from "./hooks/TaskContext";
 import { api } from "./services/api";
+import Landing from "./pages/Landing";
 
 function App() {
 
@@ -37,9 +38,11 @@ function App() {
       <TasksProvider>
         <GlobalStyle />
         {/* passando a função para poder abrir o popup  */}
-        <KanbanPage
+        {/* <KanbanPage
           onOpenNewTaskModal={handleOpenNewTaskModal}
-          onOpenNewListBoxModal={handleOpenNewListBoxModal} />
+          onOpenNewListBoxModal={handleOpenNewListBoxModal} /> */}
+
+        <Landing />
 
         <NewTaskModal
           // fazer com que o id passado aqui seja o que simboliza o listbox que o botão foi clicado
