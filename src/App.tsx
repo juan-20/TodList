@@ -1,13 +1,9 @@
-import { useEffect, useState } from "react";
-import { GlobalStyle } from './global';
+import { useState } from "react";
 import NewTaskModal from "./components/Modal/newTaskModal";
 import KanbanPage from "./pages/KanbanPage";
 import NewListBoxModal from "./components/Modal/NewListBoxModal";
 import { ListBoxProvider } from "./hooks/ListBoxContext";
 import { TasksContext, TasksProvider } from "./hooks/TaskContext";
-import { api } from "./services/api";
-import Landing from "./pages/Landing";
-
 function App() {
 
   const [isNewTaskModalOpen, setIsNewTaskModalOpen] = useState(false);
@@ -36,13 +32,12 @@ function App() {
   return (
     <ListBoxProvider>
       <TasksProvider>
-        <GlobalStyle />
         {/* passando a função para poder abrir o popup  */}
-        {/* <KanbanPage
+        <KanbanPage
           onOpenNewTaskModal={handleOpenNewTaskModal}
-          onOpenNewListBoxModal={handleOpenNewListBoxModal} /> */}
+          onOpenNewListBoxModal={handleOpenNewListBoxModal} />
 
-        <Landing />
+
 
         <NewTaskModal
           // fazer com que o id passado aqui seja o que simboliza o listbox que o botão foi clicado
