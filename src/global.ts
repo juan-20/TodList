@@ -38,6 +38,25 @@ export const GlobalStyle = createGlobalStyle`
                 margin-top: 1rem;
             }
         }
+    select{
+            width: 90%;
+            padding: 0 1.5rem;
+            border-radius: 0.25rem;
+
+            border: 1px solid #d7d7d7;
+            background: #e7e9ee;
+
+            font-weight: 400;
+            font-size: 1rem;
+
+            & + input {
+                margin-top: 1rem;
+            }
+        }
+
+        select:hover{
+            cursor: pointer;
+        }
 
         input[type = "color"]{
             background: transparent;

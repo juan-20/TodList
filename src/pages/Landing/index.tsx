@@ -6,6 +6,7 @@ import check from '../../assets/check-mark.png'
 import laptop from '../../assets/laptop.png'
 import memo from '../../assets/memo.png'
 import rocket from '../../assets/rocket.png'
+import { Link } from 'react-router-dom';
 
 function Landing() {
 
@@ -71,9 +72,11 @@ function Landing() {
 
         <main>
           {/* <p> Quadro Kanban para organizar seu dia-a-dia </p> */}
-          <button>
-            <GrNext style={style} />
-          </button>
+          <Link to="/Kanban">
+            <button>
+              <GrNext style={style} />
+            </button>
+          </Link>
 
         </main>
         <motion.img variants={bottle}

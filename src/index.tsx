@@ -24,12 +24,12 @@ createServer({
             {
               id: 0,
               title: 'Titulo',
-              collumn: '#444',
+              collumn: '0',
             },
             {
               id: 1,
               title: 'Chord',
-              collumn: '#444',
+              collumn: '0',
             }
           ]
         },

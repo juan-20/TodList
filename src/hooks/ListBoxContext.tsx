@@ -40,8 +40,16 @@ export function ListBoxProvider({ children }: ListBoxProviderProps) {
 
     }, [])
 
-    function createListBox(listBox: ListBoxInput) {
-        api.post('/listBox', listBox)
+    async function createListBox(listBoxInput: ListBoxInput) {
+        const res = await api.post('/listBox', listBoxInput)
+
+        const { listBoxs } = res.data
+
+        setListBox([
+            ...listBox, listBoxs
+        ])
+
+        console.log(listBox)
     }
 
     return (

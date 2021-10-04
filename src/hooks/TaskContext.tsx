@@ -45,15 +45,11 @@ export function TasksProvider({ children }: TasksProviderProps) {
     function createTask(task: TaskInput) {
 
         const getData = async () => {
-            const res = await axios.get('https://localhost:3000/api/listBox')
+            const res = await axios.post('/listBox',)
             console.log(res)
-            // id que será enviado pelo componente que será o collumn
-            let id = 4;
-            let i = 0
-            while (res.data.listBoxs[i] !== id) {
-                i++;
-            }
 
+
+            // id que será enviado pelo componente que será o collumn
             // o i vai ter a posição do array que vou salvar a task
 
         }

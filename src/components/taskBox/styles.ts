@@ -9,7 +9,7 @@ export const Container = styled.div`
 
         border-radius: 0.313rem;
         background: #fff;
-
+        cursor: move;
         margin-top: 1rem;
 
         display: flex;
@@ -23,22 +23,36 @@ export const Container = styled.div`
             color: #333;
             font-size: 1rem;
             font-weight: 500;
+            margin-top: 1rem;
          }
         
             .tag{
                 border-radius: 5px;
                 background: #5CC4FF;
-                width: 3.12rem;
                 height: 24px;
+                width: 10rem;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                margin-top: 1rem;
             p{
                 font-weight: 700;
                 font-size: 12px;
                 color: #fff;
                  }
              }
+             select{
+                 background: none;
+                 border: none;
+             }
         }
+    }
+
+    p{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
     }
 `;

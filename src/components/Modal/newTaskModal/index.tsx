@@ -1,16 +1,16 @@
 import { ReactNode, useContext, useState } from 'react';
 import Modal from 'react-modal';
 import { GrClose } from 'react-icons/gr';
-import { Alert } from '../NewListBoxModal/styles';
+import { Alert, Container } from '../NewListBoxModal/styles';
 import { TasksContext } from '../../../hooks/TaskContext';
+import { ListBoxContext } from '../../../hooks/ListBoxContext';
 
 interface NewTaskModalProps {
   isOpen: boolean;
-  onRequestClose: () => void
-  idOfTheListBox: number,
+  onRequestClose: () => void,
 }
 
-function NewTaskModal({ isOpen, onRequestClose, idOfTheListBox }: NewTaskModalProps) {
+function NewTaskModal({ isOpen, onRequestClose }: NewTaskModalProps) {
 
   const { createTask } = useContext(TasksContext)
 
@@ -20,19 +20,24 @@ function NewTaskModal({ isOpen, onRequestClose, idOfTheListBox }: NewTaskModalPr
 
 
   function CreateNewTask() {
-    console.log({
-      title, collumn, idOfTheListBox
-    })
 
-    createTask({
+    console.log({
       title, collumn
     })
+
+    // createTask({
+    //   title, collumn
+    // })
 
   }
 
 
 
   Modal.setAppElement('#root');
+  const { listBox } = useContext(ListBoxContext)
+
+  let idCollumn = listBox;
+
   return (
 
     <Modal
@@ -41,29 +46,32 @@ function NewTaskModal({ isOpen, onRequestClose, idOfTheListBox }: NewTaskModalPr
       overlayClassName="react-modal-overlay"
       className="react-modal-content">
 
+      <Container>
+
+        <button type="button" onClick={onRequestClose} className="react-modal-close">
+          <GrClose />
+        </button>
+
+        <h1>Cadastrar task</h1>
 
 
-      <button type="button" onClick={onRequestClose} className="react-modal-close">
-        <GrClose />
-      </button>
+        <input type="text" placeholder="Titulo"
+          value={title}
+          onChange={event => setTitle(event.target.value)} />
 
-      <h1>Cadastrar task</h1>
+        <select name="Selecionar outra lista">
+          {idCollumn.map(idCollumn => (
+            <option key={idCollumn.id} value={idCollumn.id}>{idCollumn.title}</option>
+          ))}
+        </select>
 
+        <button
+          onClick={CreateNewTask}
+          type="submit">
+          Cadastrar
+        </button>
 
-      <input type="text" placeholder="Titulo"
-        value={title}
-        onChange={event => setTitle(event.target.value)} />
-
-      <input type="text" placeholder="Titulo"
-        value={collumn}
-        onChange={event => setCollumn(event.target.value)} />
-
-      <button
-        onClick={CreateNewTask}
-        type="submit">
-        Cadastrar
-      </button>
-
+      </Container>
 
     </Modal>
 
